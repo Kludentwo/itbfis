@@ -1,9 +1,7 @@
+
 \documentclass[a4paper,11pt,openany]{memoir} 	% Openright aabner kapitler paa hoejresider (openany begge)
 
-
 %%%% PACKAGES %%%%
-
-\usepackage{marvosym}
 
 % ¤¤ Oversaettelse og tegnsaetning ¤¤ %
 \usepackage[utf8]{inputenc}					% Input-indkodning af tegnsaet (UTF8)
@@ -11,9 +9,59 @@
 \usepackage[T1]{fontenc}					% Output-indkodning af tegnsaet (T1)
 \usepackage{ragged2e,anyfontsize}			% Justering af elementer
 \usepackage{fixltx2e}						% Retter forskellige fejl i LaTeX-kernen
-\usepackage[bf, small, raggedright, compact]{titlesec}
+
 \usepackage{lastpage}
-																			
+
+
+
+\usepackage{color}
+\definecolor{codegreen}{rgb}{0.1,0.5,0.1}
+\usepackage{listings}
+\lstset{language=C,
+                basicstyle=\ttfamily,
+                keywordstyle=\color{blue}\ttfamily,
+                stringstyle=\color{red}\ttfamily,
+                commentstyle=\color{codegreen}\ttfamily,
+                morecomment=[l][\color{magenta}]{\#}}
+\lstset{language=Matlab,
+				basicstyle=\footnotesize }
+%\tiny 
+%\scriptsize 
+%\footnotesize 
+%\small 
+%\normalsize 
+%\large 
+%\Large 
+%\LARGE 
+%\huge 
+%\Huge 
+		% Chapter  %
+\definecolor{numbercolor}{gray}{0.7}		% Definerer en farve til brug til kapiteludseende
+\newif\ifchapternonum
+
+\makechapterstyle{E4}{					% Definerer kapiteludseende frem til ...
+  \renewcommand\beforechapskip{0pt}
+  \renewcommand\printchaptername{}
+  \renewcommand\printchapternum{}
+  \renewcommand\printchapternonum{\chapternonumtrue}
+  \renewcommand\chaptitlefont{\fontfamily{pbk}\fontseries{db}\fontshape{n}\fontsize{25}{35}\selectfont\raggedleft}
+  \renewcommand\chapnumfont{\fontfamily{pbk}\fontseries{m}\fontshape{n}\fontsize{1in}{0in}\selectfont\color{numbercolor}}
+  \renewcommand\printchaptertitle[1]{%
+    \noindent
+    \ifchapternonum
+    \begin{tabularx}{\textwidth}{X}
+    {\let\\\newline\chaptitlefont ##1\par} 
+    \end{tabularx}
+    \par\vskip-2.5mm\hrule
+    \else
+    \begin{tabularx}{\textwidth}{Xl}
+    {\parbox[b]{\linewidth}{\chaptitlefont ##1}} & \raisebox{-15pt}{\chapnumfont \thechapter}
+    \end{tabularx}
+    \par\vskip2mm\hrule
+    \fi
+  }
+}
+\chapterstyle{E4}												
 % ¤¤ Figurer og tabeller (floats) ¤¤ %
 \usepackage{graphicx} 						% Haandtering af eksterne billeder (JPG, PNG, EPS, PDF)
 %\usepackage{eso-pic}						% Tilfoej billedekommandoer paa hver side
@@ -50,29 +98,26 @@
 %%%% CUSTOM SETTINGS %%%%
 
 % ¤¤ Marginer ¤¤ %
-\setlrmarginsandblock{2.0cm}{1.5cm}{*}		% \setlrmarginsandblock{Indbinding}{Kant}{Ratio}
-\setulmarginsandblock{1.5cm}{2.0cm}{*}		% \setulmarginsandblock{Top}{Bund}{Ratio}
+\setlrmarginsandblock{3.5cm}{2.5cm}{*}		% \setlrmarginsandblock{Indbinding}{Kant}{Ratio}
+\setulmarginsandblock{2.5cm}{2.0cm}{*}		% \setulmarginsandblock{Top}{Bund}{Ratio}
 \checkandfixthelayout 						% Oversaetter vaerdier til brug for andre pakker
 
 %	¤¤ Afsnitsformatering ¤¤ %
 \setlength{\parindent}{0mm}           		% Stoerrelse af indryk
 \setlength{\parskip}{3mm}          			% Afstand mellem afsnit ved brug af double Enter
 \linespread{1,1}							% Linie afstand
-
+\setsecnumdepth{subsubsection}
+\usepackage{hyperref}
 % ¤¤ Lister ¤¤ %
 \setlist{
   topsep=0pt,								% Vertikal afstand mellem tekst og listen
   itemsep=-1ex,								% Vertikal afstand mellem items
 } 
 
-\titleformat{\section}%
-  [hang]% <shape>
-  {\normalfont\bfseries\Large}% <format>
-  {\arabic{section}\quad}% <label>
-  {0em}% <sep>
-  {}% <before code>
-  
+
+
 \makeevenfoot{plain}{}{Page \thepage\ of \pageref{LastPage}}{}
 \makeoddfoot{plain}{}{Page \thepage\ of \pageref{LastPage}}{}
-\makeevenhead{plain}{Nicolai Glud - 11102}{IT-DMAT}{Johnny Kristensen - 10734}
-\makeoddhead{plain}{Nicolai Glud - 11102}{IT-DMAT}{Johnny Kristensen - 10734}
+\makeevenhead{plain}{Nicolai Glud - 11102}{Rasmus Lund-Jensen - 11111}{Johnny Kristensen - 10734}
+\makeoddhead{plain}{Distance Measurement project}{ETISB}{E2013}
+\usepackage[bottom]{footmisc}  %Tilføjet for at få footnotes til at blive ved bunden af siden
