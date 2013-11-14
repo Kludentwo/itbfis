@@ -1,0 +1,78 @@
+\documentclass[a4paper,11pt,openany]{memoir} 	% Openright aabner kapitler paa hoejresider (openany begge)
+
+
+%%%% PACKAGES %%%%
+
+\usepackage{marvosym}
+
+% ¤¤ Oversaettelse og tegnsaetning ¤¤ %
+\usepackage[utf8]{inputenc}					% Input-indkodning af tegnsaet (UTF8)
+\usepackage[english]{babel}					% Dokumentets sprog
+\usepackage[T1]{fontenc}					% Output-indkodning af tegnsaet (T1)
+\usepackage{ragged2e,anyfontsize}			% Justering af elementer
+\usepackage{fixltx2e}						% Retter forskellige fejl i LaTeX-kernen
+\usepackage[bf, small, raggedright, compact]{titlesec}
+\usepackage{lastpage}
+																			
+% ¤¤ Figurer og tabeller (floats) ¤¤ %
+\usepackage{graphicx} 						% Haandtering af eksterne billeder (JPG, PNG, EPS, PDF)
+%\usepackage{eso-pic}						% Tilfoej billedekommandoer paa hver side
+%\usepackage{wrapfig}						% Indsaettelse af figurer omsvoebt af tekst. \begin{wrapfigure}{Placering}{Stoerrelse}
+\usepackage{multirow}                		% Fletning af raekker og kolonner (\multicolumn og \multirow)
+\usepackage{multicol}         	        	% Muliggoer output i spalter
+\usepackage{rotating}						% Rotation af tekst med \begin{sideways}...\end{sideways}
+\usepackage{colortbl} 						% Farver i tabeller (fx \columncolor og \rowcolor)
+\usepackage[table]{xcolor}							% Definer farver med \definecolor. Se mere: http://en.wikibooks.org/wiki/LaTeX/Colors
+\usepackage{flafter}						% Soerger for at floats ikke optraeder i teksten foer deres reference
+\let\newfloat\relax 							% Justering mellem float-pakken og memoir
+\usepackage{float}							% Muliggoer eksakt placering af floats, f.eks. \begin{figure}[H]
+
+% ¤¤ Matematik mm. ¤¤
+\usepackage{amsmath,amssymb,stmaryrd} 		% Avancerede matematik-udvidelser
+\usepackage{mathtools}						% Andre matematik- og tegnudvidelser
+\usepackage{textcomp}                 		% Symbol-udvidelser (f.eks. promille-tegn med \textperthousand )
+\usepackage{rsphrase}						% Kemi-pakke til RS-saetninger, f.eks. \rsphrase{R1}
+\usepackage[version=3]{mhchem} 				% Kemi-pakke til flot og let notation af formler, f.eks. \ce{Fe2O3}
+\usepackage{siunitx}						% Flot og konsistent praesentation af tal og enheder med \si{enhed} og \SI{tal}{enhed}
+\sisetup{locale=DE}							% Opsaetning af \SI (DE for komma som decimalseparator) 
+
+
+% ¤¤ Misc. ¤¤ %
+\usepackage[shortlabels]{enumitem}			% Muliggoer enkelt konfiguration af lister
+\usepackage{pdfpages}						% Goer det muligt at inkludere pdf-dokumenter med kommandoen \includepdf[pages={x-y}]{fil.pdf}	
+\pdfoptionpdfminorversion=6					% Muliggoer inkludering af pdf dokumenter, af version 1.6 og hoejere
+\pretolerance=2500 							% Justering af afstand mellem ord (hoejt tal, mindre orddeling og mere luft mellem ord)
+
+% Kommentarer og rettelser med \fxnote. Med 'final' i stedet for 'draft' udloeser hver note en error i den faerdige rapport.
+\usepackage[footnote,draft,english,silent,nomargin]{fixme}		
+
+
+%%%% CUSTOM SETTINGS %%%%
+
+% ¤¤ Marginer ¤¤ %
+\setlrmarginsandblock{2.0cm}{1.5cm}{*}		% \setlrmarginsandblock{Indbinding}{Kant}{Ratio}
+\setulmarginsandblock{1.5cm}{2.0cm}{*}		% \setulmarginsandblock{Top}{Bund}{Ratio}
+\checkandfixthelayout 						% Oversaetter vaerdier til brug for andre pakker
+
+%	¤¤ Afsnitsformatering ¤¤ %
+\setlength{\parindent}{0mm}           		% Stoerrelse af indryk
+\setlength{\parskip}{3mm}          			% Afstand mellem afsnit ved brug af double Enter
+\linespread{1,1}							% Linie afstand
+
+% ¤¤ Lister ¤¤ %
+\setlist{
+  topsep=0pt,								% Vertikal afstand mellem tekst og listen
+  itemsep=-1ex,								% Vertikal afstand mellem items
+} 
+
+\titleformat{\section}%
+  [hang]% <shape>
+  {\normalfont\bfseries\Large}% <format>
+  {\arabic{section}\quad}% <label>
+  {0em}% <sep>
+  {}% <before code>
+  
+\makeevenfoot{plain}{}{Page \thepage\ of \pageref{LastPage}}{}
+\makeoddfoot{plain}{}{Page \thepage\ of \pageref{LastPage}}{}
+\makeevenhead{plain}{Nicolai Glud - 11102}{IT-DMAT}{Johnny Kristensen - 10734}
+\makeoddhead{plain}{Nicolai Glud - 11102}{IT-DMAT}{Johnny Kristensen - 10734}
