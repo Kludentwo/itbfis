@@ -29,8 +29,17 @@ The last thing changed in the hifi prototype is the user levels. Since the syste
 \end{figure}
 
 The design with the two large buttons/tiles was a result of a discussion with the peer review group.\\
+
 \section{Peer review}
 Unfortunately we weren't able to make a peer review with our peer review group. This means the data isn't completely comparable since the first two test was "within subjects" and the last one will be "between subjects". Ideally it should have all been "between subjects" or "within subjects" to be able to compare the results correctly. We asked people on the school at random to make the test-cases on the prototype.
+\subsection{Peer review feedback}
+After the reviews the group interviewed the reviewers about their thoughts on the final prototype.\\
+This feedback included some of the following statements:
+\begin{itemize}
+\item "It's a very simple design. Easy to understand"
+\item "Very crisp interface"
+\item "It's easy to navigate."
+\end{itemize}
 
 \section{Results of the peer reviews}
 This section describes how the data from the review should be handled. Here we have in mind our data might not be completely comparable, but the methods doesn't change whether the data is comparable or not, only the conclusions based upon this data might be wrong. \\
@@ -66,6 +75,21 @@ Person 3 & 19 & 10 & 6 \\
 \hline 
 \end{tabular} 
 \end{table}
-Here it is possible to make a t-test to see if we have different stochastic variables. If this is the case we can prove that there has been a significant improvement. This is done in excel.\\
-
-
+Below is a plot showing the average "Time-on-task". This shows some improvement but it's unclear if it is significant.
+\begin{figure}[H]
+\centering
+\includegraphics[width=.8\textwidth]{billeder/endeliggraf.png}
+\caption{Average "Time-on-task"}
+\end{figure}
+Here it is possible to make a t-test to see if we have different stochastic variables. If this is the case we can prove that there has been a significant improvement. This is done in excel.
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+T-test & Task 1 & Task 2 & Task 3 \\  \hline
+Lo-fi/hi-fi p-value & 0.023 & 0.140 & 0.101 \\ 
+\hline 
+\end{tabular} 
+\end{table}
+\subsection{Peer review statistics conclusion}
+It's hard to conclude that there has been a significant change in "time-on-task" since the p-value is not <5\% on all task but also of reasons like "Wizard of Oz" method(low-fi), low sample size (large variance), etc.\\
